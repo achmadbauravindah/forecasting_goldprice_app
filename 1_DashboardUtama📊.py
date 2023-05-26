@@ -25,6 +25,7 @@ harga_min = str(int(df_2023.min()/1000))
 harga_max = str(int(df_2023.max()/1000))
 # Get Average Value in year
 harga_rata2 = str(int(df_2023.mean()/1000))
+dataset_download = f.getDataset().to_csv().encode('utf-8')
 
 
 ########################################## PAGES ##########################################
@@ -39,6 +40,13 @@ st.sidebar.markdown("# Tahun 2023 📊")
 st.sidebar.write("Harga Terkini :    {}rb".format(harga_terkini))
 st.sidebar.write("Rentang Harga :    {}rb-{}rb".format(harga_min, harga_max))
 st.sidebar.write("Rata-rata     :    {}rb".format(harga_rata2))
+st.sidebar.download_button(
+    'Download Dataset', 
+    data=dataset_download,
+    file_name='Dataset Harga Emas.csv',
+    mime='text/csv'
+)
+
 with st.sidebar:
     st.markdown(f'<span style="font-size:12px; font-style:italic;">Terakhir diperbarui pada {datetime.strftime(df_2023.index[-1],"%d-%m-%Y")}</span>', unsafe_allow_html=True)
 

@@ -14,12 +14,11 @@ st.set_page_config(page_title="Forecasting Harga Emas 🎩")
 # HEADER
 st.markdown("<h1 style='text-align: center;'>Forecasting Harga Emas 🎩</h1>", unsafe_allow_html=True)
 
-
 # BODY
 # Create column in page
 buff, col, buff2 = st.columns([1, 1, 1])
 state = col.empty()
-input_n_days = state.text_input("Masukan jumlah hari forecasting (maks: 15 hari)", max_chars=2)
+input_n_days = state.text_input("Masukan jumlah hari forecasting (maks: 15 hari)", max_chars=2, key='input_n_days')
 if input_n_days:
     state.empty()
     local_session['n_days_forecast'] = input_n_days
@@ -35,7 +34,7 @@ if input_n_days:
         is_up_or_down = 'Turun'
     else: 
         is_up_or_down = 'Tetap'
-    
+
     max_value = int(forecasting_results['Harga'].max())/1000
     max_value_date = forecasting_results['Harga'].idxmax()
     min_value = int(forecasting_results['Harga'].min())/1000
@@ -54,6 +53,10 @@ st.sidebar.write("Harga Tertinggi:")
 st.sidebar.write(local_session['max_value'])
 st.sidebar.write("Harga Terendah :")
 st.sidebar.write(local_session['min_value'])
+st.sidebar.markdown("# Evaluasi Model ℹ️")
+st.sidebar.markdown(
+    f'<span style="font-size:12px; font-style:italic;">Model yang digunakan adalah LSTM</span>', unsafe_allow_html=True)
+f.showEval()
 with st.sidebar:
     st.markdown(
         f'<span style="font-size:12px; font-style:italic;">Terakhir diperbarui pada {datetime.strftime(dataset.index[-1],"%d-%m-%Y")}</span>', unsafe_allow_html=True)

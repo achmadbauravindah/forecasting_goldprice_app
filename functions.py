@@ -35,12 +35,16 @@ def denormmData(values):
         scaler = pickle.load(file)
     return scaler.inverse_transform(values)
 
+
+def root_mean_squared_error(y_true, y_pred):
+    return K.sqrt(K.mean(K.square(y_pred - y_true)))
+
 # Model forecast Last Data in N-After Days
 def modelForecast(dataset, n_days):
     last_data_window = np.array(dataset[-500:])
     last_data_window_normed = normData(last_data_window).reshape(1, -1) # reshape for model LSTM input
     forecasted_values = []
-    model = tf.keras.models.load_model("./lstm-model-0.01mae.hdf5")
+    model = tf.keras.models.load_model("./files/lstm_trained_model.h5", custom_objects={'root_mean_squared_error': root_mean_squared_error})
     for n in range(n_days):
         # forecast Values
         forecasted_value = model.predict(last_data_window_normed, verbose=0)
@@ -94,6 +98,7 @@ def createLinePlot(DataFrame, x_axes, y_axes, title='Plot'):
             'font': {'size': 30, 'color': '#656EF2'},
         }, 
         xaxis_title='Waktu',
+        yaxis_title='Harga (Rp)'
     )
     return fig
 
@@ -113,7 +118,7 @@ def createBarPlot(DataFrame, x_axes, y_axes, title='Plot'):
     fig.update_layout(
         title=title_plot,
         xaxis_title='Waktu',
-        yaxis_title='Harga Emas'
+        yaxis_title='Harga (Rp)'
     )
 
     return fig
@@ -145,3 +150,12 @@ def plotForecasetResult(results_data, title):
     y_axes = results_data_df['Harga']
     fig_plot = createLinePlot(results_data_df, x_axes, y_axes, title=title)
     st.plotly_chart(fig_plot)
+
+def showEval():
+    model_eval = pd.read_excel('./files/eval.xlsx')
+    mae = float(model_eval["mae"])
+    mse = float(model_eval["mse"])
+    rmse = float(model_eval["rmse"])
+    st.sidebar.write("MAE: %.4f" % mae)
+    st.sidebar.write("MSE: %.4f" % mse)
+    st.sidebar.write("RMSE: %.4f" % rmse)
