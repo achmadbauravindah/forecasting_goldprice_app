@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 # Get and Build Data from Excel
 def getDataset():
     # Get data from directory
-    dataset_path = './preprocessed_dataset.xlsx'
+    dataset_path = './files/preprocessed_dataset.xlsx'
     preprocessed_dataset = pd.read_excel(dataset_path)
     # Set index Tanggal to data
     preprocessed_dataset['Tanggal'] = pd.to_datetime(preprocessed_dataset.Tanggal, dayfirst=True)
@@ -26,12 +26,12 @@ def getPerYearDataset(year):
     return this_year_dataset
 
 def normData(values):
-    with open('./scaler_model.pkl', 'rb') as file:
+    with open('./files/scaler_model.pkl', 'rb') as file:
         scaler = pickle.load(file)
     return scaler.transform(values)
 
 def denormmData(values):
-    with open('./scaler_model.pkl', 'rb') as file:
+    with open('./files/scaler_model.pkl', 'rb') as file:
         scaler = pickle.load(file)
     return scaler.inverse_transform(values)
 
