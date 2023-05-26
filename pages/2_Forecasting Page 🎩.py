@@ -46,7 +46,6 @@ if input_n_days:
     st.markdown(
         f'<h3 style="text-align: center;">Selama {n_days_forecasting} hari kedepan Harga Emas akan {is_up_or_down}</h3>', unsafe_allow_html=True)
 
-
 # SIDEBAR (in here because, there is value to update is max or min price)
 st.sidebar.markdown("# Forecasting 🎩")
 st.sidebar.write("Harga Tertinggi:")
