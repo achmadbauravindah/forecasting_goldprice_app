@@ -38,3 +38,7 @@ The model is evaluated using three metrics: Mean Absolute Error (MAE), Mean Squa
 ## Note
 
 This application provides predictions based on historical gold price data and does not consider other factors that may influence gold prices. Users should be aware that gold price predictions can be influenced by various factors and should exercise caution when making investment decisions.
+
+## Example App
+You can visit the app at <a href="https://achmadbauravindah-forecasting-goldprice-1-dashboardutama-men1m5.streamlit.app/">link</a>
+![Example Tutorial Simple Teachable Machine](./files/tutor_forecast_pricegold.gif)
