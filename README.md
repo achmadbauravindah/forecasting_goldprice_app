@@ -3,7 +3,6 @@ Forecasting Application using LSTM for Gold Price
 <br>
 <span>┄</span>
 </h1>
-## Example App
 
 ![Example Tutorial Simple Teachable Machine](./files/tutor_forecast_pricegold.gif)
 
