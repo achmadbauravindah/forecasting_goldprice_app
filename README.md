@@ -4,7 +4,9 @@ Forecasting Application using LSTM for Gold Price
 <span>┄</span>
 </h1>
 ## Example App
+
 ![Example Tutorial Simple Teachable Machine](./files/tutor_forecast_pricegold.gif)
+
 This application utilizes the Long Short-Term Memory (LSTM) method to forecast future gold prices. It provides information on the current gold price and estimates the future gold price. These predictions can assist gold traders in making informed investment decisions.
 
 ## Application Features
