@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 # Get and Build Data from Excel
 def getDataset():
     # Get data from directory
-    dataset_path = './files/preprocessed_dataset.xlsx'
+    dataset_path = './files/preprocessed_dataset.excel'
     preprocessed_dataset = pd.read_excel(dataset_path)
     # Set index Tanggal to data
     preprocessed_dataset['Tanggal'] = pd.to_datetime(preprocessed_dataset.Tanggal, dayfirst=True)
