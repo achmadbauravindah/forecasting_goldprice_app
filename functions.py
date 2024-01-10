@@ -44,7 +44,7 @@ def modelForecast(dataset, n_days):
     last_data_window = np.array(dataset[-500:])
     last_data_window_normed = normData(last_data_window).reshape(1, -1) # reshape for model LSTM input
     forecasted_values = []
-    model = tf.keras.models.load_model("./files/lstm_trained_model.hdf5")
+    model = tf.keras.models.load_model("./files/lstm_trained_model.h5")
     for n in range(n_days):
         # forecast Values
         forecasted_value = model.predict(last_data_window_normed, verbose=0)
