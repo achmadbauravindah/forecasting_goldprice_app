@@ -13,7 +13,7 @@ This application utilizes the Long Short-Term Memory (LSTM) method to forecast f
 - Displays the current gold price
 - Predicts future gold prices using the LSTM model
 - Visualizes the prediction results with interactive plots using Plotly Express
-- Evaluates the model using Mean Absolute Error (MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE)
+- Evaluates the model using Mean Absolute Error (MAE) and Mean Squared Error (MSE)
 - Allows selecting the prediction time range
 
 ## Preprocessing Data Steps
@@ -36,7 +36,7 @@ This application utilizes Streamlit as the user interface (UI). Streamlit enable
 
 ## Model Evaluation
 
-The model is evaluated using three metrics: Mean Absolute Error (MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE). These metrics provide information on how closely the model's predictions align with the actual values.
+The model is evaluated using three metrics: Mean Absolute Error (MAE) and Mean Squared Error (MSE). These metrics provide information on how closely the model's predictions align with the actual values.
 
 ## Note
 
